@@ -1,42 +1,217 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Full page setup */
+html,
+body,
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  width: 100%;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Main App */
+.app {
+  min-height: 100vh;
+  padding: 40px;
+  transition: all 0.3s ease;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Light Mode */
+.light-mode {
+  background: #f5f7fb;
+  color: #111827;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* Dark Mode */
+.dark-mode {
+  background: #111827;
+  color: #f9fafb;
 }
 
+/* Header */
+.app h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+/* Buttons */
+button {
+  border: none;
+  padding: 12px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: 0.3s ease;
+}
+
+/* Light mode buttons */
+.light-mode button {
+  background: #111827;
+  color: white;
+}
+
+.light-mode button:hover {
+  background: #1f2937;
+  transform: translateY(-2px);
+}
+
+/* Dark mode buttons */
+.dark-mode button {
+  background: #f9fafb;
+  color: #111827;
+}
+
+.dark-mode button:hover {
+  background: #e5e7eb;
+  transform: translateY(-2px);
+}
+
+/* Dropdown */
+select {
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  outline: none;
+  font-size: 1rem;
+  margin: 20px 0;
+  background: white;
+  transition: 0.3s ease;
+}
+
+select:focus {
+  border-color: #6366f1;
+}
+
+/* Layout */
+.shop-layout {
+  display: flex;
+  gap: 40px;
+  margin-top: 20px;
+}
+
+/* Products Section */
+.products-section {
+  flex: 1;
+}
+
+/* Product Grid */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+/* Product Card */
 .card {
-  padding: 2em;
+  padding: 24px;
+  border-radius: 18px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
 }
 
-.read-the-docs {
-  color: #888;
+/* Light card */
+.light-mode .card {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Dark card */
+.dark-mode .card {
+  background: rgba(31, 41, 55, 0.8);
+  border: 1px solid #374151;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Hover effect */
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* Product name */
+.card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+}
+
+/* Product details */
+.card p {
+  margin-bottom: 8px;
+  opacity: 0.85;
+}
+
+/* Cart Sidebar */
+.cart-sidebar {
+  width: 320px;
+  padding: 24px;
+  border-radius: 18px;
+  position: sticky;
+  top: 40px;
+  height: fit-content;
+}
+
+.light-mode .cart-sidebar {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.dark-mode .cart-sidebar {
+  background: rgba(31, 41, 55, 0.8);
+  border: 1px solid #374151;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Cart */
+ul {
+  list-style: none;
+  margin-top: 15px;
+}
+
+li {
+  padding: 12px 16px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+/* Cart items light */
+.light-mode li {
+  background: white;
+  border: 1px solid #e5e7eb;
+}
+
+/* Cart items dark */
+.dark-mode li {
+  background: #1f2937;
+  border: 1px solid #374151;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .app {
+    padding: 20px;
+  }
+
+  .app h1 {
+    font-size: 2rem;
+  }
+
+  .shop-layout {
+    flex-direction: column;
+  }
+
+  .cart-sidebar {
+    width: 100%;
+    position: static;
+  }
 }

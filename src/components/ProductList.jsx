@@ -1,23 +1,31 @@
-import React from 'react'
-import ProductCard from './ProductCard'
+import React from "react";
 
-// Sample product data (for display purposes only)
+// Exported so tests can import it
 export const sampleProducts = [
-  { id: 1, name: 'Apple', price: '$1.00', category: 'Fruits', inStock: true },
-  { id: 2, name: 'Milk', price: '$2.50', category: 'Dairy', inStock: false }
-]
+  { id: 1, name: "Milk", category: "Dairy", price: "$3" },
+  { id: 2, name: "Cheese", category: "Dairy", price: "$5" },
+  { id: 3, name: "Apple", category: "Fruit", price: "$2" },
+  { id: 4, name: "Banana", category: "Fruit", price: "$1" },
+  { id: 5, name: "Bread", category: "Bakery", price: "$4" },
+];
 
-const ProductList = () => {
+const ProductList = ({ products, addToCart }) => {
   return (
-    <div>
-      <h2>Available Products</h2>
-
-      {/* TODO: Filter sample data using selected category */}
-      {sampleProducts.map((product) => (
-        <ProductCard key={product.id} product={product} />
+    <div className="products-grid">
+      {products.map((product) => (
+        <div key={product.id} className="card">
+          <h3>{product.name}</h3>
+          <p>{product.category} · {product.price}</p>
+          <button
+            data-testid={`product-${product.id}`}
+            onClick={() => addToCart(product)}
+          >
+            Add to Cart
+          </button>
+        </div>
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default ProductList
+export default ProductList;

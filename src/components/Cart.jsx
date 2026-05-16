@@ -1,14 +1,31 @@
-import React from 'react'
+import React from "react";
 
-const Cart = () => {
+const Cart = ({ cart, removeFromCart }) => {
+  const total = cart.reduce((sum, item) => {
+    return sum + parseFloat(item.price.replace("$", ""));
+  }, 0);
+
   return (
     <div>
-      <h2>Shopping Cart</h2>
-      <ul>
-        {/* TODO: Include items here in li tags with text 'ITEM.NAME is in your cart.' */}
-      </ul>
-    </div>
-  )
-}
+      <h2>Shopping Cart ({cart.length})</h2>
 
-export default Cart
+      {cart.length === 0 ? (
+        <p>Your cart is empty</p>
+      ) : (
+        <>
+          <ul>
+            {cart.map((item, index) => (
+              <li key={index}>
+                {item.name} is in your cart
+                <button onClick={() => removeFromCart(index)}>Remove</button>
+              </li>
+            ))}
+          </ul>
+          <p>Total: ${total.toFixed(2)}</p>
+        </>
+      )}
+    </div>
+  );
+};
+
+export default Cart;
